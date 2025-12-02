@@ -94,6 +94,30 @@ export default function Register() {
                 />
                 {errors.password && <span className="text-red-500 text-sm mt-1">Password must be at least 8 characters</span>}
               </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Mobile Number <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="tel"
+                  {...register('phoneNumber', { 
+                    required: 'Mobile number is required',
+                    pattern: {
+                      value: /^[0-9]{10}$/,
+                      message: 'Please enter a valid 10-digit mobile number'
+                    }
+                  })}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                  placeholder="9876543210"
+                  maxLength={10}
+                />
+                {errors.phoneNumber && (
+                  <span className="text-red-500 text-sm mt-1">
+                    {errors.phoneNumber.message as string}
+                  </span>
+                )}
+              </div>
             </div>
             
             <button

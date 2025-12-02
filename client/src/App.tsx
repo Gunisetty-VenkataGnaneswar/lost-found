@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import PostItem from './pages/PostItem';
 import ItemDetail from './pages/ItemDetail';
 import Dashboard from './pages/Dashboard';
+import AdminPanel from './pages/AdminPanel';
 
 function App() {
   const { token } = useAuthStore();
@@ -21,6 +22,7 @@ function App() {
         <Route path="/post" element={token ? <PostItem /> : <Navigate to="/login" />} />
         <Route path="/items/:id" element={token ? <ItemDetail /> : <Navigate to="/login" />} />
         <Route path="/dashboard" element={token ? <Dashboard /> : <Navigate to="/login" />} />
+        <Route path="/admin" element={token ? <AdminPanel /> : <Navigate to="/login" />} />
       </Route>
     </Routes>
   );

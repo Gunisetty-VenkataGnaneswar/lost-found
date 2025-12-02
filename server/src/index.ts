@@ -8,6 +8,7 @@ import path from 'path';
 import authRoutes from './routes/authRoutes';
 import itemRoutes from './routes/itemRoutes';
 import aiRoutes from './routes/aiRoutes';
+import adminRoutes from './routes/adminRoutes';
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 app.use('/api/auth', authRoutes);
 app.use('/api/items', itemRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });

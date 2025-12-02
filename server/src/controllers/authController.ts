@@ -4,7 +4,7 @@ import User from '../models/User';
 
 export const register = async (req: Request, res: Response) => {
   try {
-    const { email, password, displayName } = req.body;
+    const { email, password, displayName, phoneNumber } = req.body;
 
     // Validate KLU campus email
     const emailDomain = email.split('@')[1];
@@ -12,12 +12,22 @@ export const register = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'Must use KLU campus email (@klu.ac.in)' });
     }
 
+    // Validate phone number
+    if (!phoneNumber) {
+      return res.status(400).json({ message: 'Mobile number is required' });
+    }
+
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(phoneNumber)) {
+      return res.status(400).json({ message: 'Please enter a valid 10-digit mobile number' });
+    }
+
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'Email already registered' });
     }
 
-    const user = new User({ email, password, displayName });
+    const user = new User({ email, password, displayName, phoneNumber });
     await user.save();
 
     const token = jwt.sign(

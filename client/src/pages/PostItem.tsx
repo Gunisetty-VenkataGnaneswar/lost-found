@@ -207,12 +207,27 @@ export default function PostItem() {
         )}
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number (Optional)</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Phone Number <span className="text-red-500">*</span>
+          </label>
           <input
             type="tel"
-            {...register('phoneNumber')}
+            {...register('phoneNumber', { 
+              required: 'Phone number is required',
+              pattern: {
+                value: /^[0-9]{10}$/,
+                message: 'Please enter a valid 10-digit mobile number'
+              }
+            })}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="9876543210"
+            maxLength={10}
           />
+          {errors.phoneNumber && (
+            <span className="text-red-500 text-sm mt-1">
+              {(errors.phoneNumber as any).message}
+            </span>
+          )}
         </div>
 
         <div>

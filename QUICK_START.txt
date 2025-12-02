@@ -1,0 +1,106 @@
+╔════════════════════════════════════════════════════════════╗
+║   CAMPUS LOST & FOUND PORTAL - QUICK START GUIDE          ║
+╚════════════════════════════════════════════════════════════╝
+
+🚀 FASTEST WAY TO RUN (3 STEPS):
+
+1️⃣  INSTALL MONGODB
+   - Download: https://www.mongodb.com/try/download/community
+   - Install and it will start automatically
+   
+   OR use MongoDB Atlas (cloud):
+   - Sign up: https://www.mongodb.com/cloud/atlas/register
+   - Create free cluster
+   - Update MONGODB_URI in server/.env
+
+2️⃣  START SERVER
+   - Double-click: start-server.bat
+   - Wait for: "Connected to MongoDB"
+   - Keep this window open!
+
+3️⃣  START CLIENT (in new window)
+   - Double-click: start-client.bat
+   - Wait for: "Local: http://localhost:5173"
+   - Browser will open automatically
+
+4️⃣  OPEN BROWSER
+   - Go to: http://localhost:5173
+   - Register with any email (e.g., student@university.edu)
+   - Start using the app!
+
+═══════════════════════════════════════════════════════════
+
+✨ AI FEATURES INCLUDED:
+
+Your Gemini API key is already configured!
+
+• AI Image Analysis - Upload image when posting items
+  → Auto-generates title, category, and description
+  → Detects brands and text in images
+
+• Smart Matching - Automatically finds similar items
+  → Shows similarity percentage
+  → Explains why items might match
+
+═══════════════════════════════════════════════════════════
+
+📧 EMAIL SETUP (Optional):
+
+Edit server/.env:
+   SMTP_USER=your-gmail@gmail.com
+   SMTP_PASS=your-app-password
+
+Get Gmail App Password:
+   1. Google Account → Security
+   2. Enable 2-Step Verification
+   3. Create App Password
+   4. Paste in .env file
+
+═══════════════════════════════════════════════════════════
+
+🎓 CHANGE CAMPUS EMAIL DOMAIN:
+
+Edit server/.env:
+   CAMPUS_EMAIL_DOMAIN=your-university.edu
+
+For testing, use: gmail.com
+
+═══════════════════════════════════════════════════════════
+
+🔧 TROUBLESHOOTING:
+
+❌ Port 5000 already in use?
+   → Change PORT=5001 in server/.env
+   → Update VITE_API_URL in client/.env
+
+❌ MongoDB connection failed?
+   → Make sure MongoDB is running
+   → Check MONGODB_URI in server/.env
+
+❌ npm not found?
+   → Install Node.js: https://nodejs.org/
+
+═══════════════════════════════════════════════════════════
+
+📚 MORE HELP:
+
+• Detailed guide: RUN_PROJECT.md
+• Setup guide: SETUP_GUIDE.md
+• Main README: README.md
+
+═══════════════════════════════════════════════════════════
+
+🎯 TEST THESE FEATURES:
+
+✓ Register/Login
+✓ Post lost item with security questions
+✓ Post found item
+✓ Upload image and use AI analysis
+✓ Search and filter items
+✓ View AI-suggested similar items
+✓ Claim items with verification
+✓ Manage items in dashboard
+
+═══════════════════════════════════════════════════════════
+
+Happy coding! 🎉

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Image Loading</title>
+</head>
+<body>
+    <h1>Image Loading Test</h1>
+    
+    <h2>Test 1: Direct Image URL</h2>
+    <img src="http://localhost:5000/uploads/item-1764661637751-911518858.jpg" 
+         alt="Test Image" 
+         style="max-width: 400px; border: 2px solid red;"
+         onerror="this.style.border='2px solid red'; this.alt='FAILED TO LOAD';"
+         onload="this.style.border='2px solid green';">
+    
+    <h2>Test 2: Check if server is running</h2>
+    <button onclick="testServer()">Test Server Connection</button>
+    <div id="result"></div>
+    
+    <script>
+        async function testServer() {
+            try {
+                const response = await fetch('http://localhost:5000/api/health');
+                const data = await response.json();
+                document.getElementById('result').innerHTML = 
+                    '<p style="color: green;">✓ Server is running: ' + JSON.stringify(data) + '</p>';
+            } catch (error) {
+                document.getElementById('result').innerHTML = 
+                    '<p style="color: red;">✗ Server connection failed: ' + error.message + '</p>';
+            }
+        }
+        
+        // Auto test on load
+        window.onload = testServer;
+    </script>
+</body>
+</html>
